@@ -11,7 +11,14 @@ while(PlayerHp > 0 && EnemyHp > 0)
     Console.WriteLine("playerHp -" +PlayerHp + "emenyHp -" +EnemyHp);
     Console.WriteLine("player turn");
     Console.WriteLine("if you want to heal click h or attack a");
-    char ourChoice=char.Parse(Console.ReadLine());
+    char ourChoice;
+    bool validInput = char.TryParse(Console.ReadLine(), out ourChoice);
+
+    if (!validInput)
+    {
+        Console.WriteLine("Invalid input. Please enter 'h' for heal or 'a' for attack.");
+        continue; // Restart the loop to re-prompt the user
+    }
 
     if (ourChoice == 'h')
     {
@@ -24,8 +31,8 @@ while(PlayerHp > 0 && EnemyHp > 0)
     }
     else
     {
-        Console.WriteLine("you choose option that is existed");
-        ourChoice= char.Parse(Console.ReadLine());
+        Console.WriteLine("Invalid choice. Please choose 'h' to heal or 'a' to attack.");
+        continue;
     }
 
     //enemy part
@@ -44,13 +51,15 @@ while(PlayerHp > 0 && EnemyHp > 0)
     }
 
 
-    if (PlayerHp == 0)
-    {
+    
+    
 
-        Console.WriteLine(" player,you lose");
-    }else if(EnemyHp== 0)
-    {
-        Console.WriteLine("enemy you lose");
-    }
-
+}
+if(PlayerHp > 0)
+{
+    Console.WriteLine("you have won");
+}
+else
+{
+    Console.WriteLine("you lose");
 }
