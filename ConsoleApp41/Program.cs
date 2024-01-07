@@ -6,7 +6,9 @@ int EnemyHp = 40;
 int PLayerDamege = 7;
 int EnemyDamege = 5;
 int healing = 6;
-while(PlayerHp > 0 && EnemyHp > 0)
+Random random = new Random();
+
+while (PlayerHp > 0 && EnemyHp > 0)
 {
     Console.WriteLine("playerHp -" +PlayerHp + "emenyHp -" +EnemyHp);
     Console.WriteLine("player turn");
@@ -37,14 +39,13 @@ while(PlayerHp > 0 && EnemyHp > 0)
 
     //enemy part
     Console.WriteLine("-- enemy part--");
-    Random random = new Random();
 
-    int randomincrease = random.Next(0, 3);
-    if(randomincrease == 1)
+    int randomincrease = random.Next(0, 2);
+    if(randomincrease == 0)
     {
         EnemyHp -= PLayerDamege;
         Console.WriteLine("enemy is damaged");
-    }else if(randomincrease == 2)
+    }else if(randomincrease == 1)
     {
         EnemyHp += healing;
         Console.WriteLine("enemy  healed -" + healing);
